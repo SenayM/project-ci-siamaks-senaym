@@ -114,7 +114,7 @@ Json data for editing user credentials
     ${edited_user_json}=                      Stringify Json       ${dictionary}
     [Return]                                  ${edited_user_json}
 
-Edit last user login
+Edit last user credentials
     ${id}=                                    Get the id of the last user
     ${edited_data}=                           Json data for editing user credentials
     Create Http Context                       ${host}      ${schema}
