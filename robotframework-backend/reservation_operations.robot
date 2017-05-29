@@ -44,7 +44,7 @@ Json Data for hotelreservation
     
     ${dictionary}=                             Create Dictionary     entryDate=${entryDate}      exitDate=${exitDate}       priceDaily=${priceDaily}     bedroomId=${bedroomData}    clientId=${clientData}  reservationStatusId=${reservationStatusId}                       
     ${hotel_reservation_json_data}=            Stringify Json       ${dictionary}
-   
+    Log to console                            ${hotel_reservation_json_data}
     [Return]                                   ${hotel_reservation_json_data}
    
 
