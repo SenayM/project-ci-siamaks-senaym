@@ -51,7 +51,7 @@ Edit last bedroom Discription
     PUT                                       ${edit_a_bedroom_endpoint}/${id}   
     ${response_status}=                       Get Response Status                  
     #Log to Console                            ${request_body}
-    Log to Console                            ${\n}${data}
+    #Log to Console                            ${\n}${data}
     Should Contain                            ${response_status}             204
     
 Json Data for edit bedroom Discription
@@ -120,7 +120,7 @@ Create new vacant_classicbedking_bedroom
     Set Request Body                          ${data}      
     POST                                      ${create_a_bedroom_endpoint}   
     ${request_status}=                        Get Response Status                  
-    Log to Console                            ${\n}${data}
+   # Log to Console                            ${\n}${data}
     Should Contain                            ${request_status}             204        
 
 Get all bedrooms
@@ -129,8 +129,18 @@ Get all bedrooms
     ${response_status}=                        Get Response Status
     ${response_body}=                          Get Response Body
     Log To Console                             ${response_status}      
-    Log To Console                             ${response_body}
+    #Log To Console                             ${response_body}
     Should Contain          	               ${response_status}          200
+    
+Get the last bedroom data
+    ${id}=                           Get The ID of The Last Bedroom
+    Create Http Context              ${host}      ${schema}
+    Get                              ${get_all_bedroom_endpoint}/${id}   
+    ${response_status}               Get Response Status
+    Should Contain                   ${response_status}                      200
+    ${response_body}                 Get Response Body
+   # Log to Console                   ${response_body}
+    [Return]                         ${response_body}   
     
     
 Delete Last bedroom
@@ -140,4 +150,21 @@ Delete Last bedroom
     ${response_status}                        Get Response Status
     Log to Console                            ${response_status}
     Should Contain                            ${response_status}             204  
+    
+Get the last bedroom string data
+    ${body_of_last_bedroom}=                   Get the last bedroom data
+   
+    ${id}=                                     Get Json Value                            ${body_of_last_bedroom}        /id   
+    ${bedroom_discription}=                    Get Json Value                            ${body_of_last_bedroom}        /description
+    ${bedroom_discription}=                    Remove String                            ${bedroom_discription}          "
+    ${bedroom_floor} =                         Get Json Value                            ${body_of_last_bedroom}        /floor 
+    ${bedroom_number} =                        Get Json Value                            ${body_of_last_bedroom}        /number
+    ${bedroom_dailyprice}=                     Get Json Value                            ${body_of_last_bedroom}        /priceDaily
+    ${bedroom_Status}=                         Json data for bedroom status vacant 
+    ${bedroom_type}=                           Json data for bedroom type
+    
+    ${dictionary}=                             Create Dictionary                 id=${id}      description= ${bedroom_discription}   floor=${bedroom_floor}  number=${bedroom_number}   priceDaily=${bedroom_dailyprice}  bedroomStatusId=${bedroom_Status}     typeBedroomId=${bedroom_type}
+    [Return]                                   ${dictionary}
+  
+
         

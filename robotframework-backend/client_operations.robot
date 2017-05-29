@@ -75,5 +75,34 @@ Get the id of the last client
     ${lastId_client}=                Get Json Value        ${body_for_all_clients}         /${last_index}/id     
     Log to Console                   Id_of_lastClient:${lastId_client}         
     [Return]                         ${lastId_client} 
+    
+Get the last client data
+    ${id}=                           Get the id of the last client
+    Create Http Context              ${host}      ${schema}
+    Get                              ${get_all_clients_endpoint}/${id}   
+    ${response_status}               Get Response Status
+    Should Contain                   ${response_status}                      200
+    ${response_body}                 Get Response Body
+    Log to Console                   ${response_body}
+    [Return]                         ${response_body}   
+    
 
-        
+Get the last client string data
+     ${body_of_last_client}=                   Get the last client data
+     
+     ${id}=                                    Get Json Value                  	        ${body_of_last_client}          /id
+     ${name}=                         	       Get Json Value                  	        ${body_of_last_client}          /name
+     ${name}=                         	       Remove String             ${name}            "
+     ${createDate}=                            Get Json Value                  	        ${body_of_last_client}          /createDate  
+     ${email}=                                 Get Json Value                  	        ${body_of_last_client}          /email
+     ${email}=                         	       Remove String             ${email}            "
+     ${socialSecurityNumber}=         	       Get Json Value                  	        ${body_of_last_client}          /socialSecurityNumber
+     ${socialSecurityNumber}=                  Remove String             ${socialSecurityNumber}            "
+     ${gender}=                                Get Json Value                  	        ${body_of_last_client}          /gender
+     ${gender}=                         	   Remove String             ${gender}            "
+    
+     ${dictionary}=                           Create Dictionary          id=${id}       name=${name}  createDate=${createDate}   email=${email}   gender=${gender}   socialSecurityNumber=${socialSecurityNumber}
+     [return]                                 ${dictionary}
+    
+     
+   

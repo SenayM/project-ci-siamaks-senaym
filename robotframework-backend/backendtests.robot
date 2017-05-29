@@ -1,5 +1,8 @@
 *** Settings ***
 Resource     bedroom_operations.robot
+Resource     client_operations.robot
+Resource     user_operations.robot
+Resource     reservation_operations.robot
 
 *** Test cases ***
 
@@ -32,3 +35,16 @@ Test Case 8 - Edit Last User
 
 Test Case 9 - Delete Last User
     Delete last user
+      
+ Test Case 10 - Create Reservation
+      #Befor running reservation test make sure you run create clients 
+     Create a client 
+     Create new vacant_classicbedking_bedroom
+     Create new new Reservation
+    
+ Test Case 11 - Count number of Resrvations
+     Count number of Resrvations
+ 
+ 
+ 
+    
