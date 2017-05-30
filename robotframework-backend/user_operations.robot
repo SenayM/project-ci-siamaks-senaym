@@ -27,7 +27,7 @@ Get all users
     ${response_status}=                        Get Response Status
     ${response_body}=                          Get Response Body
     Log To Console                             ${response_status}      
-    Log To Console                             ${response_body}
+    #Log To Console                             ${response_body}
     Should Contain          	               ${response_status}          200
 
 Json data for user 
@@ -123,7 +123,7 @@ Edit last user credentials
     Set Request Body                          ${edited_data}      
     PUT                                       ${edit_a_user_endpoint}/${id}   
     ${response_status}=                       Get Response Status                  
-    Log to Console                            ${\n}Edited_credentials_of_lastUser:${edited_data}
+    #Log to Console                            ${\n}Edited_credentials_of_lastUser:${edited_data}
     Should Contain                            ${response_status}             204
 
 Delete last user

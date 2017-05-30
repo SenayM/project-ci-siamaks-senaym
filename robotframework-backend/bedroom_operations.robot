@@ -36,9 +36,9 @@ Get The ID of The Last Bedroom
     ${request_body}=                           Get Response Body
     #Log to Console                             ${request_body}
     ${last_index}=                             Evaluate              ${request_body}-1
-    Log to Console                             LastIndex: ${last_index}
+    #Log to Console                             LastIndex: ${last_index}
     ${json_id}=                                Get Json Value        ${body_first_request}         /${last_index}/id     
-    Log to Console                             LastId:${json_id}         
+    #Log to Console                             LastId:${json_id}         
     [Return]                                   ${json_id}
 
 Edit last bedroom Discription
