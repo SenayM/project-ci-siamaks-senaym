@@ -29,7 +29,7 @@ Create new new Reservation
     Set Request Body                          ${data}      
     POST                                      ${create_a_hotelreservation_endpoint}   
     ${request_status}=                        Get Response Status                  
-    Log to Console                            FINALDATA${\n}${data}
+    #Log to Console                            FINALDATA${\n}${data}
     Should Contain                            ${request_status}             204   
 
 Json Data for hotelreservation
@@ -44,7 +44,7 @@ Json Data for hotelreservation
     
     ${dictionary}=                             Create Dictionary     entryDate=${entryDate}      exitDate=${exitDate}       priceDaily=${priceDaily}     bedroomId=${bedroomData}    clientId=${clientData}  reservationStatusId=${reservationStatusId}                       
     ${hotel_reservation_json_data}=            Stringify Json       ${dictionary}
-    Log to console                            ${hotel_reservation_json_data}
+    #Log to console                            ${hotel_reservation_json_data}
     [Return]                                   ${hotel_reservation_json_data}
    
 

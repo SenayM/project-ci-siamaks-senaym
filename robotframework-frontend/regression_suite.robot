@@ -18,55 +18,43 @@ Test setup                     Setup
 Test teardown                  Teardown
 
 ***Test cases***
-*** Comments ***
-Test create bedroom
+
+Test Case 1 login and logout
+    Perform_login_as_admin_user
+    perform_logout
+    
+Test Case 2 create bedroom
     Perform_login_as_admin_user
     navigate_to_bedroom_page_link_left
     Navigate_to_create_bedroom
     Create_new_vacant_classicbedking_bedroom
     perform_logout
-Test edit bedroom
+    
+Test Case 3 View Bedroom
     Perform_login_as_admin_user
     navigate_to_bedroom_page_link_left
-    Navigate_to_edit_thefirst_bedroom
-    Edit_all_bedroom_info_and_change_status_type
-    perform_logout
-
-
-Test create common user
-    Perform_login_as_admin_user
-    navigate_to_user_page_link_left
-    Navigate_to_create_user_form
-    Create_new_common_user
-    perform_logout
-
-Test create admin user
-    Perform_login_as_admin_user
-    navigate_to_user_page_link_left
-    Navigate_to_create_user_form
-    Create_new_admin_user
+    View_the_first_bedroom
     perform_logout
     
-False Positive test edit client with wrong email format
+Test Case 4 Delete bedroom
     Perform_login_as_admin_user
-    Navigate_to_client_page_link_left
-    Navigate_to_edit_client
-    Edit_client_into_wrong_email_format
+    navigate_to_bedroom_page_link_left
+    Delete_the_first_bedroom
     perform_logout
-***Test cases***
-Test_view_a_bill
+
+Test Case 5 view_a_bill
     perform_login_as_admin_user
     navigate_to_bill_page_link_left
     view_first_bill_and_verify
     perform_logout
  
-Test_delete_a_reservation
+Test Case 6 delete_a_reservation
     perform_login_as_admin_user
     navigate_to_reservation_page_link_left
     delete_first_reservation_and_verify
     perform_logout
 
-Test_all_buttons_on_client_view_page
+Test Case 7 all_buttons_on_client_view_page
     perform_login_as_admin_user
     navigate_to_client_page_link_left
     navigate_to_client_view_pg    
@@ -78,20 +66,20 @@ Test_all_buttons_on_client_view_page
     click_index_btn_on_client_view_pg_and_verify
     perform_logout
 
-Test_create_client
+Test Case 8 create_client
     perform_login_as_admin_user
     navigate_to_client_page_link_left
     navigate_to_create_client_form
     create_new_client_and_verify
     perform_logout
 
-Test_view_a_client
+Test Case 9 view_a_client
     perform_login_as_admin_user
     navigate_to_client_page_link_left
     view_client_and_verify
     perform_logout
 
-Test_delete_a_client
+Test Case 10 delete_a_client
     perform_login_as_admin_user
     navigate_to_client_page_link_left
     delete_client_and_verify
